@@ -10,12 +10,9 @@ bool DFSRec(vector<int> adj[], int s, bool visited[], bool recStk[])
     recStk[s] = true;
     for(int x: adj[s])
     {
-        if(visited[x] == false)
+        if(visited[x] == false && ( DFSRec(adj, x, visited, recStk) == true ))
         {
-            if(DFSRec(adj, x, visited, recStk) == true)
-            {
-                return true;
-            }
+            return true;
         }
         else if(recStk[x] == true)
         {
@@ -55,13 +52,23 @@ void addEdge(vector<int> adj[], int u, int v)
 
 int main()
 {
-    int V = 4;
-    vector<int> adj[V];
-    addEdge(adj, 0, 1);
-    addEdge(adj, 2, 1);
-    addEdge(adj, 3, 2);
-    addEdge(adj, 1, 3);
+    int V=6;
+	vector<int> adj[V];
+	addEdge(adj,0,1); 
+	addEdge(adj,2,1); 
+	addEdge(adj,2,3); 
+	addEdge(adj,3,4); 
+	addEdge(adj,4,5);
+	addEdge(adj,5,3);
 
-    cout << DFS(adj, V) << endl;
+    if (DFS(adj, V))
+    {
+        cout << "Cycle found" << endl;
+    }
+    else
+    {
+        cout << "No Cycle found" << endl;
+    }
+
     return 0;
 }
