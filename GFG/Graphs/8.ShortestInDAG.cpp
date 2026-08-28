@@ -1,5 +1,8 @@
 // shortest path in directed acyclic graph
-#include <bits/stdc++.h> 
+#include <iostream>
+#include <stack>
+#include <list>
+#include <vector>
 #define INF INT_MAX 
 using namespace std; 
 
@@ -7,21 +10,30 @@ class AdjListNode
 { 
 	int v; 
 	int weight; 
-public: 
-	AdjListNode(int _v, int _w) { v = _v; weight = _w;} 
-	int getV()	 { return v; } 
-	int getWeight() { return weight; } 
+
+	public: 
+	AdjListNode(int _v, int _w) 
+	{ 
+		v = _v; 
+		weight = _w;
+	} 
+	int getV()
+	{
+		return v;
+	} 
+	int getWeight() 
+	{ 
+		return weight;
+	} 
 }; 
 
 class Graph 
 { 
 	int V;
-
 	list<AdjListNode> *adj; 
-
 	void topologicalSortUtil(int v, bool visited[], stack<int> &Stack); 
     
-    public: 
+    public:
 	Graph(int V); 
 	void addEdge(int u, int v, int weight); 
 	void shortestPath(int s); 
