@@ -1,5 +1,6 @@
 #include <iostream>
 #include <climits>
+using namespace std;
 
 class Graph {
 public:
@@ -18,9 +19,9 @@ public:
     }
 
     void printMST(int parent[]) {
-        std::cout << "Edge \tWeight\n";
+        cout << "Edge \tWeight\n";
         for (int i = 1; i < V; ++i) {
-            std::cout << parent[i] << " - " << i << "\t" << graph[i][parent[i]] << "\n";
+            cout << parent[i] << " - " << i << "\t" << graph[i][parent[i]] << "\n";
         }
     }
 
